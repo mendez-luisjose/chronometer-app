@@ -1,0 +1,31 @@
+{
+  "name": "cronometro",
+  "version": "1.0.0",
+  "description": "An App about a Cronometer",
+  "main": "index.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=production node ./backend/index.js",
+    "dev": "cross-env NODE_ENV=development nodemon ./backend/index.js",
+    "build:app": "cross-env NODE_ENV=production npx webpack",
+    "dev:front": "webpack-dev-server --open"
+  },
+  "author": "Luis Jose Mendez",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^6.0.13",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "css-loader": "^6.5.1",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.4.5",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.64.4",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.6.0"
+  }
+}

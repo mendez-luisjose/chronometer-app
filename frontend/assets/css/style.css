@@ -1,0 +1,569 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+    /*========== Colors ==========*/
+    --hue-color: 240;
+
+    --first-color: hsl(var(--hue-color), 53%, 49%);
+    --title-color: hsl(var(--hue-color), 53%, 15%);
+    --text-color: hsl(var(--hue-color), 12%, 35%);
+    --text-color-light: hsl(var(--hue-color), 12%, 65%);
+    --white-color: #FFF;
+    --black-color: #000;
+    --body-color: hsl(var(--hue-color), 24%, 94%);
+    --shadow-color : hsl(var(--hue-color), 100%, 18%);
+    --shadow-color-light : hsl(var(--hue-color), 100%, 70%);
+    --hover-color: hsla(var(--hue-color), 53%, 49%, 0.1);
+    --active-color: hsla(var(--hue-color), 53%, 49%, 0.2);
+    --clean-button-hover-color: hsla(var(--hue-color), 53%, 49%, 0.8);
+    --clean-button-active-color: hsla(var(--hue-color), 53%, 49%, 0.9);
+
+
+    --theme-rounder-blue: #3b3bbf;
+    --theme-rounder-green: #63cfa0;
+    --theme-rounder-orange: #cf9063;
+    --theme-rounder-pink: #cf6390;
+
+    --blue: hsl(240, 53%, 49%);
+    --green: hsl(154, 53%, 60%);
+    --orange: hsl(25, 53%, 60%);
+    --pink: hsl(335, 53%, 60%);
+
+      /*========== Font and typography ==========*/
+    --body-font: 'Poppins', sans-serif;
+    --biggest-font-size: 3rem;
+    --small-font-size: .813rem;
+    --smaller-font-size: .75rem;
+    --tiny-font-size: .625rem;
+    --medium-font-size: 1.3rem;
+
+    /*========== Font weight ==========*/
+    --font-medium: 500;
+
+    /*========== Margenes Bottom ==========*/
+    --mb-0-25: .25rem;
+    --mb-1: 1rem;
+    --mb-1-5: 1.5rem;
+    --mb-2-5: 2.5rem;
+
+    /*========== z index ==========*/
+    --z-normal: 1;
+    --z-tooltip: 10;
+}
+
+/*========== Variables Dark theme ==========*/
+body.dark-theme {
+  --title-color: hsl(var(--hue-color), 12%, 95%);
+  --text-color: hsl(var(--hue-color), 12%, 75%);
+  --body-color: hsl(var(--hue-color), 10%, 16%);
+  transition: all 0.3s ease;
+}
+
+.dark-theme header .dark-button {
+    box-shadow: inset -1px -1px 1px hsla(var(--hue-color), 8%, 20%, 1), 
+              inset 1px 1px 1px hsla(var(--hue-color), 8%, 12%, 1);
+    transition: all 0.3s ease;
+}
+
+.dark-theme header .palette-button {
+   box-shadow: inset -1px -1px 1px hsla(var(--hue-color), 8%, 20%, 1), 
+              inset 1px 1px 1px hsla(var(--hue-color), 8%, 12%, 1);
+    transition: all 0.3s ease;
+}
+
+.dark-theme header .theme-colors__container {
+    box-shadow: inset -1px -1px 1px hsla(var(--hue-color), 8%, 20%, 1), 
+              inset 1px 1px 1px hsla(var(--hue-color), 8%, 12%, 1);
+    transition: all 0.3s ease;
+}
+
+.dark-theme main .countdown__circle{
+    box-shadow: 6px 6px 16px hsla(var(--hue-color), 8%, 12%, 1), 
+              -6px -6px 16px hsla(var(--hue-color), 8%, 20%, 1), 
+              inset -6px -6px 16px hsla(var(--hue-color), 8%, 20%, 1), 
+              inset 6px 6px 12px hsla(var(--hue-color), 8%, 12%, 1);
+    transition: all 0.3s ease;
+   
+}
+
+.dark-theme main .countdown__circle .countdown__inner-circle {
+    transition: all 0.3s ease;
+}
+
+.dark-theme main .countdown__start-reset-lap-buttons .timer-button {
+    box-shadow: 5px 3px 5px -1px var(--shadow-color-light);
+    -webkit-box-shadow: 5px 3px 5px -1px var(--shadow-color-light);
+    -moz-box-shadow: 5px 3px 5px -1px var(--shadow-color-light);
+}
+
+.dark-theme footer .lap-historial {
+    box-shadow: inset -1px -1px 1px hsla(var(--hue-color), 8%, 20%, 1), 
+                inset 1px 1px 1px hsla(var(--hue-color), 8%, 12%, 1);
+    transition: all 0.3s ease;
+}
+
+/*=============== BASE ===============*/
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+
+body {
+  margin: 0;
+  font-family: var(--body-font);
+  background-color: var(--body-color);
+  color: var(--text-color);
+  transition: all 0.3s ease;
+}
+
+/*==================== Cronometro ====================*/
+
+.container {
+    max-width: 968px;
+    margin: var(--mb-1);
+    display: none;
+    
+}
+
+.countdown__container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+}
+
+/*==================== HEADER ====================*/
+
+
+header .countdown__theme-dark-mode-buttons{
+    display: flex;
+    justify-content: space-between;
+    width: 260px;
+    position: relative;
+    
+}
+
+header .dark-button {
+    padding: .25rem;
+    border-radius: 50%;
+    box-shadow: inset -1px -1px 1px hsla(var(--hue-color), 0%, 100%, 1), 
+                inset 1px 1px 1px hsla(var(--hue-color), 30%, 86%, 1);
+    color: var(--first-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: absolute;
+    top: -1rem;
+    right: -1rem;
+}
+
+header .palette-button {
+    padding: .25rem;
+    border-radius: 50%;
+    box-shadow: inset -1px -1px 1px hsla(var(--hue-color), 0%, 100%, 1), 
+                inset 1px 1px 1px hsla(var(--hue-color), 30%, 86%, 1);
+    color: var(--first-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+header .countdown__title {
+    text-align: center;
+    margin: 0.5rem 0 1.2rem;
+}
+
+header .countdown__title h1 {
+    font-size: 1.7rem;
+}
+
+header .palette-button-container {
+    position: absolute;
+    top: -1rem;
+    left: -1rem;
+}
+
+header .theme-colors__container {
+    display: flex;
+    flex-direction: column;
+    transform: translate(-30px, 10px);
+    box-shadow: inset -1px -1px 1px hsla(var(--hue-color), 0%, 100%, 1), 
+                inset 1px 1px 1px hsla(var(--hue-color), 30%, 86%, 1);
+    padding: 5px 10px 5px;
+    border-radius: 20px;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    
+}
+
+header .theme-colors__container.open {
+    opacity: 1;
+    pointer-events: auto;
+    transition: all 0.3s ease;
+}
+
+header .theme-colors__container .btn {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  outline: none;
+  border: none;
+  border-radius: 50%;
+  margin: 5px 0px;
+  cursor: pointer;
+}
+
+
+header .theme-colors__container .btn.blue {
+  background-color: var(--blue);
+}
+
+header .theme-colors__container .btn.blue.active {
+  box-shadow: 0 0 0 2px var(--white-color),
+              0 0 0 4px var(--theme-rounder-blue);
+}
+
+header .theme-colors__container .btn.orange {
+  background-color: var(--orange);
+}
+
+header .theme-colors__container .btn.orange.active {
+  background-color: var(--orange);
+  box-shadow: 0 0 0 2px var(--white-color),
+              0 0 0 4px var(--theme-rounder-orange);
+}
+
+header .theme-colors__container .btn.green {
+  background-color: var(--green);
+}
+
+header .theme-colors__container .btn.green.active {
+  background-color: var(--green);
+  box-shadow: 0 0 0 2px var(--white-color),
+              0 0 0 4px var(--theme-rounder-green);
+}
+
+header .theme-colors__container .btn.pink {
+  background-color: var(--pink);
+}
+
+header .theme-colors__container .btn.pink.active {
+  background-color: var(--pink);
+  box-shadow: 0 0 0 2px var(--white-color),
+              0 0 0 4px var(--theme-rounder-pink);
+
+}
+
+/*==================== MAIN ====================*/
+main .countdown__circle {
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--first-color);
+    position: relative;
+    z-index: var(--z-normal);
+    box-shadow: -6px -6px 16px var(--white-color), 
+              6px 6px 16px hsla(var(--hue-color), 30%, 86%, 1), 
+              inset 6px 6px 16px hsla(var(--hue-color), 30%, 86%, 1), 
+              inset -6px -6px 16px var(--white-color);
+    transition: all 0.3s ease;
+   
+}
+
+main .countdown__circle .countdown__inner-circle {
+    border: 1px solid var(--first-color);
+    width: 230px;
+    height: 230px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--body-color);
+    z-index: var(--z-tooltip);
+    position: relative;
+    border: 5px solid var(--first-color);
+    transition: all 0.3s ease;
+}
+
+main .countdown__circle .countdown__inner-circle span {
+    font-size: 2.2rem;
+    font-weight: var(--font-medium);
+}
+
+main .countdown__circle .countdown__inner-circle .miliseconds {
+    font-size: 1.2rem;
+    margin-left: 5px;
+    transform: translateY(-10px);
+}
+
+main .countdown__circle .countdown__inner-circle .chronometer {
+    margin: 0 5px;
+}
+
+main .countdown__start-reset-lap-buttons {
+    display: flex;
+    justify-content: center;
+    width: 300px;
+    margin: 2.5rem 0 1.5rem;
+    transform: translateX(-5px);
+}
+
+main .countdown__start-reset-lap-buttons .timer-button {
+    border: 1px solid var(--first-color);
+    border-radius: 20px;
+    box-shadow: 5px 3px 5px -1px var(--shadow-color);
+    -webkit-box-shadow: 5px 3px 5px -1px var(--shadow-color);
+    -moz-box-shadow: 5px 3px 5px -1px var(--shadow-color);
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+main .countdown__start-reset-lap-buttons .timer-button:hover {
+    background-color: var(--hover-color);
+}
+
+main .countdown__start-reset-lap-buttons .timer-button:active {
+    background-color: var(--active-color);
+}
+
+main .countdown__start-reset-lap-buttons .timer-button h2 {
+    font-size: 0.9rem;
+    font-weight: var(--font-medium);
+}
+
+main .restart-button {
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.5s ease;
+}
+
+main .start-button {
+    margin: 0 10px 0 20px;
+    transform: translateX(-5px);
+    transition: all 0.5s ease;
+}
+
+main .countdown__start-reset-lap-buttons .lap-button {
+    padding: 0.5rem 1.2rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.5s ease;
+    
+}
+
+/*==================== Clase que Hace Aparecer Los Botones de Reiniciar y Lap ====================*/
+
+main .restart-button.open-start {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+main .countdown__start-reset-lap-buttons .lap-button.open-start {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+
+/*==================== FOOTER ====================*/
+ 
+footer {
+    display: none;
+    transition: all 0.3s ease;
+}
+
+footer.show {
+    display: block;
+    transition: all 0.3s ease;
+}
+
+footer .laps {
+    list-style: none;
+    width: 250px;
+    height: 150px;
+    overflow: auto;
+    width: 100%;
+    padding: 5px 10px;
+    margin: 0 0 30px;
+    transition: all 0.3s ease;
+}
+
+
+footer .laps::-webkit-scrollbar {
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+footer .lap-historial {
+    width: 220px;
+    margin: 5px 0;
+    border-radius: 10px;
+    padding: 0.5rem;
+    box-shadow: inset -1px -1px 1px hsla(var(--hue-color), 0%, 100%, 1), 
+                inset 1px 1px 1px hsla(var(--hue-color), 30%, 86%, 1);
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+footer .lap-number {
+    margin: 0 10px;
+}
+
+footer .lap-phrase {
+    margin-right: 40px;
+}
+
+footer .countdown__clean-lap-history-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--first-color);
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    width: fit-content;
+    margin: 0 auto;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    
+}
+
+footer .countdown__clean-lap-history-button.open-start {
+    opacity: 1;
+    pointer-events: auto;
+    
+}
+
+footer .countdown__clean-lap-history-button:hover {
+    background-color: var(--clean-button-hover-color);
+}
+
+footer .countdown__clean-lap-history-button:active {
+    background-color: var(--clean-button-active-color);
+}
+
+footer .countdown__clean-lap-history-button span {
+    color: rgba(255, 255, 255, 0.726);
+    font-weight: var(--font-medium);
+    font-size: 1.2rem;
+    padding: 0rem;
+}
+
+/*=============== CSS SPINNER ===============*/
+.div-spinner-container {
+  background-color: var(--body-color);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+}
+
+
+.loader,
+.loader:before,
+.loader:after {
+  border-radius: 50%;
+  width: 2.5em;
+  height: 2.5em;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation: load7 1.8s infinite ease-in-out;
+  animation: load7 1.8s infinite ease-in-out;
+}
+.loader {
+  color: var(--first-color);
+  font-size: 10px;
+  margin: 80px auto;
+  position: relative;
+  text-indent: -9999em;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+.loader:before,
+.loader:after {
+  content: '';
+  position: absolute;
+  top: 0;
+}
+.loader:before {
+  left: -3.5em;
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+.loader:after {
+  left: 3.5em;
+}
+@-webkit-keyframes load7 {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 2.5em 0 -1.3em;
+  }
+  40% {
+    box-shadow: 0 2.5em 0 0;
+  }
+}
+@keyframes load7 {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 2.5em 0 -1.3em;
+  }
+  40% {
+    box-shadow: 0 2.5em 0 0;
+  }
+}
+
+/*=============== MEDIA QUERIES ===============*/
+/* For large devices */
+@media screen and (min-width: 968px) {
+  .container {
+        margin: 0 auto;
+    }
+
+    header .theme-colors__container {
+        transform: translate(-50px, 10px);
+    }
+
+    main .countdown__start-reset-lap-buttons .timer-button h2 {
+        font-size: 1.2rem;
+        font-weight: var(--font-medium);
+    }
+        
+    main .start-button {
+        margin: 0 20px 0 30px;
+    }
+
+    footer .laps::-webkit-scrollbar {
+      width: 20px;
+      opacity: 1;
+      transition: all 0.3s ease;
+    }
+
+    footer .laps::-webkit-scrollbar-track {
+        background-color: var(--body-color);
+        border-radius: 100px;
+        transition: all 0.3s ease;
+    }
+
+    footer .laps::-webkit-scrollbar-thumb {
+        background-color: var(--first-color);
+        border-radius: 100px;
+        border: 5px solid transparent;
+        background-clip: content-box;
+        transition: all 0.3s ease;
+    }
+
+}
