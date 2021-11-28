@@ -1,7 +1,6 @@
 # Responsive Chronometer App
 ## A Simple Responsive Chronometer UI App
 ### Responsive Chronometer UI App 
-- The app shows the date, month and the year
 - Includes a light and dark theme
 - You can press the Start button, Pause button, the Restart Button and the Lap Button
 - It can save the differents times of the Chronometer using the Lap Button
